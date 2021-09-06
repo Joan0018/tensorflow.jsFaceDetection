@@ -7,16 +7,16 @@ var start = new Date();
 var dateStart = start.getHours() + ":" + start.getMinutes() + ":" + start.getSeconds() + ":" + start.getMilliseconds();
 console.log("Start Time = "+ dateStart);
 
-const setupCamera = () => {
-  navigator.mediaDevices
-    .getUserMedia({
-      video: {width: 720, height: 560},
-      audio: false,
-    })
-    .then((stream) => {
-      video.srcObject = stream;
-    });
-};
+// const setupCamera = () => {
+//   navigator.mediaDevices
+//     .getUserMedia({
+//       video: {width: 720, height: 560},
+//       audio: false,
+//     })
+//     .then((stream) => {
+//       video.srcObject = stream;
+//     });
+// };
 
 async function detectFaces(){
   const prediction = await model.estimateFaces(video, false);
@@ -36,8 +36,8 @@ async function detectFaces(){
   });
 }
 
-setupCamera();
-video.addEventListener("play", () => {
+// setupCamera();
+video.addEventListener('play', () => {
   setInterval(async () => {
     model = await blazeface.load();
     detectFaces();
